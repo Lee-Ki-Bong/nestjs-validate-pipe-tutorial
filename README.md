@@ -2,7 +2,7 @@
 
 이 tutorial 은 요청 파라미터 DTO 대한 유효성 검사와 변환하는 방법을 소개하는데 초점을 두었다.
 
-더 자세한 정보를 얻고자 한다면 공식 docs를 찾아보길 바란다.
+더 다양한 유효성 검사 방식과 자세한 정보를 얻고자 한다면 공식 [docs](https://docs.nestjs.com/techniques/configuration#custom-validate-function) 를 찾아보길 바란다.
 
 #
 
