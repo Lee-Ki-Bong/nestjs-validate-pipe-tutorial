@@ -372,11 +372,105 @@ export class UserWithProfileDTO extends IntersectionType(
 
 #
 
-## 위에서 조합을 다루었다면, 반대로 분리도 할 수 있어야한다.
+## 커스텀 파이프활용
 
-### 커스텀 파이프를 이용하여 파라미터 분리하는 방법
+- CreateProductDto 와 CreateProductOptionDto 이 구조화(조립) 되어있지 않다면 이 방법을 활용해야한다.
 
-TODO....
+### 파이프 안에서 validate
+
+```javascript
+@Injectable()
+export class ProductPipe implements PipeTransform {
+  async transform(prdDto: any, metadata: ArgumentMetadata) {
+    prdDto = plainToInstance(CreateProductDto, prdDto);
+    prdDto.options = plainToInstance(CreateProductOptionDto, prdDto.options);
+
+    /**
+     * @step1 이 파이프에서 사용될 validator 에서 체크할 옵션
+     */
+    const validatorOptions = {
+      enableDebugMessages: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    };
+
+    /**
+     * @step2 prdDto & prdOptions validate
+     * - 반드시 배열 dto 이면 map 으로 체크 해야한다.
+     */
+    const errorsProduct = await validate(prdDto, validatorOptions);
+    let errorsOptions = [];
+    if (Array.isArray(prdDto.options)) {
+      errorsOptions = await Promise.all(
+        prdDto.options.map((optDto: CreateProductOptionDto) =>
+          validate(optDto, validatorOptions),
+        ),
+      );
+    }
+
+    /**
+     * @step3 에러 처리
+     */
+    const allErrors = [...errorsProduct, ...errorsOptions.flat()];
+    if (allErrors.length > 0) {
+      throw new BadRequestException(allErrors);
+    }
+
+    /**
+     * @step4 리턴
+     */
+    return prdDto;
+  }
+}
+```
+
+### 컨트롤러에 적용한 모습
+
+- productData 매개변수는 파이프에서 리턴한 prdDto 값을 가지게 된다.
+
+```javascript
+@Post('/product')
+async createProduct(@Body(ProductPipe) productData: CreateProductDto) {
+  // productData는 ProductPipe에서 반환된 값을 가지게 됨.
+  return product;
+}
+```
+
+## 파라미터 분리하는 방법
+
+- 파이프에서 여러 값을 반환하고 컨트롤러 메서드에서 해당 값을 분리적으로 사용하고자 할 때 유용하다.
+- 이건 필자의 사견인데 이렇게 쓰지말고, [DTO를 조합](#intersectiontype)하여 사용하는걸 권장한다.
+  - DTO는 요청을 정의하는 의미도 있는데, 이렇게 되면 실제 요청과 DTO간의 괴리가 발생한다.
+
+### 파이프에서 분리하여 리턴
+
+```javascript
+@Injectable()
+export class ProductPipe implements PipeTransform {
+  async transform(prdDto: any, metadata: ArgumentMetadata) {
+    const productDto = plainToInstance(CreateProductDto, prdDto);
+    const productOptionDto = plainToInstance(
+      CreateProductOptionDto,
+      prdDto.options,
+    );
+    return { productDto, productOptionDto }; // 이렇게 분리하여 리턴
+  }
+}
+```
+
+```javascript
+@Post('/product')
+@UsePipes(ProductPipe) // ProductPipe를 적용
+async createProduct(
+  @Body() productData: CreateProductDto,
+  @Body() productOptionData: CreateProductOptionDto,
+) {
+  // productData는 ProductPipe를 거쳐 변환된 첫번째 값.
+  // productOptionData는 ProductPipe를 거쳐 변환된 두번째 값.
+  // 즉 파이프 리턴순서와 매개변수 순서를 꼭 확인해야한다.
+  return product;
+}
+```
 
 #
 
