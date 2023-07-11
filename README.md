@@ -1,7 +1,13 @@
 ## 시작하기 전에
 
-이 tutorial 은 요청 파라미터 DTO 대한 유효성 검사와 변환하는 방법을 소개하는데 초점을 두었다.
+이 tutorial 은 요청 파라미터에 대한 유효성 검사와 응답 변환하는 방법을 소개하는데 초점을 두었다.
 
+- 전역 파이프와 데코레이터를 통한 요청 파라미터 유효성 검사
+- 요청 DTO
+- 응답 DTO
+- DTO 조립
+- DTO 와 Enttity 변환
+  
 더 다양한 유효성 검사 방식과 자세한 정보를 얻고자 한다면 공식 [docs](https://docs.nestjs.com/techniques/configuration#custom-validate-function) 를 찾아보길 바란다.
 
 #
