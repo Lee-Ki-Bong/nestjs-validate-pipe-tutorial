@@ -522,6 +522,7 @@ class UserService {
 - 아래는 예시를 들기위해 하나로 쭉 작성한것이다. DTO 별로 파일을 나누관리 해야한다.
 
 ```javascript
+// 데이터 전송 객체
 export class ResponseUserDto {
   @Expose()
   u_name: string;
@@ -533,6 +534,7 @@ export class ResponseUserDto {
   u_is_agree: YesNoEnum;
 }
 
+// 공통 메시지 & 데이터 응답 구조 DTO
 export class ResponseDataAndMessageDto<T> {
   @Expose()
   data: T;
@@ -541,12 +543,16 @@ export class ResponseDataAndMessageDto<T> {
   message: string;
 }
 
+// ProductMudule 에서 공통 DTO 상속받아 구현.
+// 단일
 export class ResponseUserAndMessageDto extends ResponseDataAndMessageDto<ResponseUserDto> {
   @Type(() => ResponseUserDto)
   @Expose()
   data: ResponseUserDto;
 }
 
+// ProductMudule 에서 공통 DTO 상속받아 구현.
+// 리스트
 export class ResponseUsersAndMessageDto extends ResponseDataAndMessageDto<
   ResponseUserDto[],
 > {
