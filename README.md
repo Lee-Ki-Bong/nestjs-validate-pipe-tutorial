@@ -16,8 +16,8 @@
 
 ### 이전에 다루었던 내용은 다루지 않을 것이다.
 
-- [nestjs-sketch](https://github.com/Lee-Ki-Bong/nestjs-sketch)
-- [nestjs-typeorm-tutorial](https://github.com/Lee-Ki-Bong/nestjs-typeorm-tutorial)
+- [nestjs-sketch](https://git.nm.koapp.com/npm-dev/backend/nestjs-architecture-sketch/-/blob/develop/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90)
+- [nestjs-typeorm-tutorial](https://git.nm.koapp.com/npm-dev/backend/nestjs-typeorm-tutorial/-/blob/develop/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90)
 
 ### 패키지 설치
 
