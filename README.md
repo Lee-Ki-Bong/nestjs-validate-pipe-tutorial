@@ -513,11 +513,11 @@ class UserService {
 }
 ```
 
-### 응답 변환
+## 응답 변환
 
 - 서버에서 메시지와 함께 데이터를 응답해야할 경우가 있을 것이다.
 
-#### 메시지와 데이터로 이루어진 응답 DTO 예시
+### 메시지와 데이터로 이루어진 응답 DTO 예시
 
 - 아래는 예시를 들기위해 하나로 쭉 작성한것이다. DTO 별로 파일을 나누관리 해야한다.
 
@@ -556,7 +556,7 @@ export class ResponseUsersAndMessageDto extends ResponseDataAndMessageDto<
 }
 ```
 
-#### plainToInstance() 사용하여 Entity -> DTO 변환
+### plainToInstance() 사용하여 Entity -> DTO 변환
 
 ```javascript
   async insert(createDto: CreateUserDto) {
@@ -579,7 +579,7 @@ export class ResponseUsersAndMessageDto extends ResponseDataAndMessageDto<
   }
 ```
 
-#### 변환이 잘 이루어진 모습
+### 변환이 잘 이루어진 모습
 
 - console.log(responeData);
 
