@@ -146,10 +146,10 @@ export class CreateUserDto {
 
 ```
 {
-	"u_name" : "홍길홍",
-	"u_email" : "test2@gmail.com",
-	"u_password" : "1234A!",
-	"u_is_agree" : "Y",
+  "u_name" : "홍길홍",
+  "u_email" : "test2@gmail.com",
+  "u_password" : "1234A!",
+  "u_is_agree" : "Y",
   "u_phone" : "01012341234" // 정의 되지 않은 속성
 }
 ```
