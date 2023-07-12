@@ -328,43 +328,6 @@ export class CompleteUserDto extends IntersectionType(
 ) {}
 ```
 
-### UnionType
-
-- 두 개 이상의 DTO를 합쳐 새로운 DTO를 생성한다. 합쳐친 모든 속성들을 선택적인 속성으로 가지게 된다.
-- 타입을 다양화하고 선택적으로 사용
-
-```javascript
-import { UnionType } from '@nestjs/mapped-types';
-import { PublicUserDto } from './public-user.dto';
-import { AdminUserDto } from './admin-user.dto';
-
-export class UserDto extends UnionType(PublicUserDto, AdminUserDto) {}
-```
-
-### ExcludeExtraneousValues
-
-- userInput 객체에는 id, name, email 외에도 age 속성이 존재하지만,
-- ExcludeExtraneousValues() 함수를 사용하여 UserDTO와 동일한 구조의 객체를 생성할 때,
-- 불필요한 속성인 age는 제외.
-- 따라서 userDTO 객체에는 id, name, email 속성만 포함된다.
-
-```javascript
-export class UserDTO {
-  id: number;
-  name: string;
-  email: string;
-}
-
-const userInput = {
-  id: 1,
-  name: 'John',
-  email: 'john@example.com',
-  age: 25,
-};
-
-const userDTO = ExcludeExtraneousValues(UserDTO, userInput);
-```
-
 ### 응용
 
 - 이런 식으로 조합하여 사용가능하다.
