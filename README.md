@@ -86,7 +86,7 @@ getUserById(@Query('id') userId: number) {
 }
 ```
 
-#### 요청 Body 형변환
+- 요청 Body 형변환된 모습
 
 ```javascript
 // POST /users
@@ -97,7 +97,7 @@ createUser(@Body() createUserDto: CreateUserDto) {
 }
 ```
 
-#### 컨트롤러 매개변수 형변환
+- 컨트롤러 매개변수 형변환된 모습
 
 ```javascript
 // GET /users/:id
