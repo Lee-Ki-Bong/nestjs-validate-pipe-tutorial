@@ -436,7 +436,7 @@ NestJS를 다루다보면 다양한 부분에서 이함수를 사용하게 된�
 - 기존 객체를 유지한 채로 속성 값을 변경하고 싶을 때.
 - 복잡한 객체 간의 값을 복사하고 싶을 때.
 
-### DTO & Entity 변환 심화
+### DTO & Entity 변환할때
 
 - transform 패키지의 planToInstance()의 옵션을 소개하겠다.
 - 이를 통해 DTO와 Entity 간의 데이터 전환을 좀 더 용이하게 처리할 수 있다.
@@ -462,7 +462,7 @@ class UserService {
 
 ### 메시지와 데이터로 이루어진 응답 DTO 예시
 
-- 아래는 예시를 들기위해 하나로 쭉 작성한것이다. DTO 별로 파일을 나누어 관리 해야한다.
+- 아래는 이해를 돕기위해 하나로 쭉 작성한것이다. DTO 별로 파일을 나누어 관리 해야한다.
 
 ```javascript
 // 데이터 전송 객체
@@ -477,7 +477,7 @@ export class ResponseUserDto {
   u_is_agree: YesNoEnum;
 }
 
-// 공통 메시지 & 데이터 응답 구조 DTO
+// 공통으로 사용될 메시지 & 데이터 응답 구조 DTO
 export class ResponseDataAndMessageDto<T> {
   @Expose()
   data: T;
