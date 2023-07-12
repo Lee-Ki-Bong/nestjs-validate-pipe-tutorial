@@ -68,7 +68,7 @@ export class AppModule {}
 ```javascript
 @Get('/users')
 getUserById(@Query('id') userId: number) {
-  console.log(typeof userId); // 출력: string
+  console.log(typeof userId); // transform: true 주지 않았을때 출력: string 
 }
 ```
 
