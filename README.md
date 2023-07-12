@@ -74,6 +74,8 @@ getUserById(@Query('id') userId: number) {
 
 #### 쿼리 파라미터 형변환
 
+- transform: true 옵션을 준다면 아래와 같이 형변환이 이루어진다.
+
 ```javascript
 
 // GET /users?id=123
