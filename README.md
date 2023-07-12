@@ -19,28 +19,6 @@
 - [nestjs-architecture-sketch](https://git.nm.koapp.com/npm-dev/backend/nestjs-architecture-sketch/-/blob/develop/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90)
 - [nestjs-typeorm-tutorial](https://git.nm.koapp.com/npm-dev/backend/nestjs-typeorm-tutorial/-/blob/develop/README.md#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90)
 
-### 패키지 설치
-
-```
-yarn add class-validator
-npm install class-validator
-```
-
-```
-yarn add class-transformer
-npm install class-transformer
-```
-
-```
-yarn add @nestjs/config
-npm install @nestjs/config
-```
-
-```
-yarn add @nestjs/typeorm typeorm mysql2
-npm install @nestjs/typeorm typeorm mysql2
-```
-
 #
 
 ## 전역 파이프
@@ -566,3 +544,25 @@ ResponseUserAndMessageDto {
 ```
 
 #
+
+### 패키지 설치 명령어
+
+```
+yarn add class-validator
+npm install class-validator
+```
+
+```
+yarn add class-transformer
+npm install class-transformer
+```
+
+```
+yarn add @nestjs/config
+npm install @nestjs/config
+```
+
+```
+yarn add @nestjs/typeorm typeorm mysql2
+npm install @nestjs/typeorm typeorm mysql2
+```
